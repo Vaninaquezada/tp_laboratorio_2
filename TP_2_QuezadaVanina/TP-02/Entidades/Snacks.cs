@@ -28,7 +28,10 @@ namespace Entidades_2018
                 return 104;
             }
         }
-
+        /// <summary>
+        /// Formatea los datos de la clase snack en string
+        /// </summary>
+        /// <returns>los datos en formato string</returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

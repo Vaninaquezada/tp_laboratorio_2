@@ -39,7 +39,10 @@ namespace Entidades_2018
                 return 20;
             }
         }
-
+        /// <summary>
+        /// Formatea los datos de la clase leche y la clase base en string 
+        /// </summary>
+        /// <returns>los datos en string</returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

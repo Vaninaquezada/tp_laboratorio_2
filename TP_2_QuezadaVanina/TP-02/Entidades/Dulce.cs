@@ -28,7 +28,10 @@ namespace Entidades_2018
                 return 80;
             }
         }
-
+        /// <summary>
+        /// Formatea los datos de la clase dulce y la clase base productos en string
+        /// </summary>
+        /// <returns>los datos en string</returns>
         public override sealed string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
