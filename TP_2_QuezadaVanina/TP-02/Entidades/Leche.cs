@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Entidades_2018
 {
-    class Leche : Producto
+   public class Leche : Producto
     {
         public enum ETipo { Entera, Descremada }
         ETipo tipo;
@@ -16,13 +16,17 @@ namespace Entidades_2018
         /// <summary>
         /// Por defecto, TIPO será ENTERA
         /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="patente"></param>
-        /// <param name="color"></param>
-        public Leche(EMarca marca, string patente, ConsoleColor color)
-            : base(patente, marca, color)
+        /// <param name="marca">marca de la leche tipo EMarca</param>
+        /// <param name="codigo">codigo de la leche de tipo string</param>
+        /// <param name="color">color del empaque de tipo console color</param>
+        ///<param name="tipo">tipo de la leche tipo ETipo</param>
+        public Leche(EMarca marca, string codigo, ConsoleColor color)
+            : this(marca, codigo, color, ETipo.Entera)
+        {   }
+        public Leche(EMarca marca, string codigo, ConsoleColor color,ETipo tipo)
+           : base(codigo, marca, color)
         {
-            tipo = ETipo.Entera;
+            this.tipo = tipo;
         }
 
         /// <summary>
@@ -32,7 +36,7 @@ namespace Entidades_2018
         {
             get
             {
-                return this.CantidadCalorias;
+                return 20;
             }
         }
 
@@ -41,13 +45,13 @@ namespace Entidades_2018
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("LECHE");
-            sb.AppendLine(this);
-            sb.AppendLine("CALORIAS : {0}", this.CantidadCalorias);
-            sb.AppendLine("TIPO : " + this.tipo);
+            sb.AppendLine(base.Mostrar());
+            sb.AppendFormat("CALORIAS : {0}\r\n", this.CantidadCalorias);
+            sb.AppendFormat("TIPO : " + this.tipo);
             sb.AppendLine("");
             sb.AppendLine("---------------------");
 
-            return sb;
+            return sb.ToString();
         }
     }
 }

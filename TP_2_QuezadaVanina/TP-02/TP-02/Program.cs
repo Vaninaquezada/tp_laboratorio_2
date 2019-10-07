@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Entidades_2018;
 namespace TP_02_2018
 {
     class Program
@@ -15,7 +15,7 @@ namespace TP_02_2018
             Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight - 2);
 
             // Nombre del alumno
-            Console.
+            Console.Title = "Vanina Quezada TP 2";
 
             Changuito changoDeCompras = new Changuito(6);
 
