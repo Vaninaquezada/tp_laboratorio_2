@@ -1,0 +1,4 @@
+C:\Users\Vanina\source\repos\Quezada.Vanina.2C.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csprojAssemblyReference.cache
+C:\Users\Vanina\source\repos\Quezada.Vanina.2C.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csproj.CoreCompileInputs.cache
+C:\Users\Vanina\Desktop\Quezada.Vanina.2C.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csprojAssemblyReference.cache
+C:\Users\Vanina\Desktop\Quezada.Vanina.2C.TP3\EntidadesInstanciables\obj\Debug\EntidadesInstanciables.csproj.CoreCompileInputs.cache
