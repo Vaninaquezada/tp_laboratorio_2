@@ -48,9 +48,32 @@ namespace TestUnitarios
         [TestMethod]
         public void ValidaProfesorNoNull()
         {
-            string dni = "456";
-            Profesor profesor = new Profesor(1, "Juan", "Lopez", dni, EntidadesAbstractas.Persona.ENacionalidad.Argentino);
+
+            Profesor profesor = new Profesor(1, "Juan", "Lopez", "456", EntidadesAbstractas.Persona.ENacionalidad.Argentino);
             Assert.IsNotNull(profesor.DNI);
         }
+
+        [TestMethod]
+        public void ValidaUniversidadNoNull()
+        {
+            Universidad univesidad = new Universidad();
+            Profesor profesor = new Profesor(1, "Juan", "Lopez", "456", EntidadesAbstractas.Persona.ENacionalidad.Argentino);
+            univesidad += profesor;
+
+            Assert.IsNotNull(univesidad.Instructores);
+        }
+
+        [TestMethod]
+        public void ValidaAlumnoNoNull()
+        {
+            Alumno alumno = new Alumno(2, "Juana", "Martinez", "92234458", EntidadesAbstractas.Persona.ENacionalidad.Extranjero, Universidad.EClases.Laboratorio, Alumno.EEstadoCuenta.Deudor);
+
+            Assert.IsNotNull(alumno);
+        }
+
+
+
+
+
     }
 }

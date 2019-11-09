@@ -66,6 +66,7 @@ namespace EntidadesInstanciables
         /// <summary>
         /// serializará los datos del Universidad en un XML, incluyendo todos los datos de sus
         ///   Profesores, Alumnos y Jornadas.
+        ///   Archivo se crea en el escritorio de la pc que lo ejecuta
         /// </summary>
         /// <param name="uni"></param>
         /// <returns></returns>
@@ -78,7 +79,6 @@ namespace EntidadesInstanciables
                 Xml<Universidad> guardar = new Xml<Universidad>();
 
                 archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\Universidad.xml";
-
                 banderita = guardar.Guardar(archivo, uni);
             }
             catch (Exception e)
@@ -101,8 +101,8 @@ namespace EntidadesInstanciables
             {
                 Xml<Universidad> leer = new Xml<Universidad>();
                 string archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\Universidad.xml";
+ 
 
-                
                 banderita = leer.Leer(archivo, out datos);
              
 
@@ -173,19 +173,28 @@ namespace EntidadesInstanciables
             foreach (Profesor i in u.profesores)
             {
                 if (i == clase)
+                {
                     return i;
+                }
             }
+
             throw new Excepciones.SinProfesorException();
 
         }
 
         public static Profesor operator !=(Universidad u, EClases clase)
         {
+            Profesor profesor= new Profesor();
 
+            foreach (Profesor i in u.profesores)
+            {
+                if (i != clase)
+                {
+                    profesor = i;
+                }
+            }
 
-            return u == clase;
-
-
+            return profesor;
         }
         /// <summary>
         /// Un Universidad será igual a un Profesor si el mismo está dando clases en él.
@@ -198,7 +207,7 @@ namespace EntidadesInstanciables
             foreach (Profesor inst in g.profesores)
             {
                 if (inst == i)
-                    return true;
+                { return true; }
             }
             return false;
 

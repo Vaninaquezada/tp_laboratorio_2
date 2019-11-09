@@ -49,6 +49,7 @@ namespace EntidadesInstanciables
 
         /// <summary>
         /// Guardar de clase guardará los datos de la Jornada en un archivo de texto.
+        ///   Archivo se crea en el escritorio de la pc que lo ejecuta
         /// </summary>
         /// <param name="jornada"></param>
         /// <returns></returns>
