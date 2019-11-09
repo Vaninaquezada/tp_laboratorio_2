@@ -54,11 +54,15 @@ namespace EntidadesInstanciables
         /// <returns></returns>
         public static bool Guardar(Jornada jornada)
         {
+            bool banderita = false;
+
             try
             {
                 Texto t = new Archivo.Texto();
-               
-                return t.Guardar(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\Jornada.txt", jornada.ToString());
+
+                banderita = t.Guardar(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\Jornada.txt", jornada.ToString());
+
+
 
             }
             catch (Exception e)
@@ -66,6 +70,8 @@ namespace EntidadesInstanciables
                 throw new ArchivosException(e);
 
             }
+
+            return banderita;
         }
 
         /// <summary>
@@ -73,22 +79,27 @@ namespace EntidadesInstanciables
         /// </summary>
         /// <param name="jornada"></param>
         /// <returns></returns>
-        public static bool Leer(Jornada jornada)
+        public static string Leer(Jornada jornada)
         {
+            string datos;
+            string archivo;
+            bool s = false;
             try
             {
                 Texto t = new Archivo.Texto();
-                string datos;
-                string archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\Jornada.txt";
-                bool s = t.Leer(archivo, out datos); ;
-                Console.WriteLine(datos);
-                return s;
+                 
+                 archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\Jornada.txt";
+                s = t.Leer(archivo, out datos); ;
+               
+               
             }
             catch (Exception e)
             {
                 throw new ArchivosException(e);
 
             }
+
+            return datos;
         }
 
         /// <summary>
@@ -139,15 +150,15 @@ namespace EntidadesInstanciables
 
         public static Jornada operator +(Jornada j, Alumno a)
         {
-            if (j != a)
-            {
-                j.alumnos.Add(a);
-            }
-            else
-            {
-                throw new AlumnoRepetidoException();
-            }
-
+               if (j != a)
+               {
+                   j.alumnos.Add(a);
+               }
+               else
+               {
+                   throw new AlumnoRepetidoException();
+               }
+               
             return j;
         }
         #endregion

@@ -71,42 +71,50 @@ namespace EntidadesInstanciables
         /// <returns></returns>
         public static bool Guardar(Universidad uni)
         {
+            bool banderita = false;
+            string archivo = "";
             try
             {
                 Xml<Universidad> guardar = new Xml<Universidad>();
 
-                string archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\Universidad.xml";
+                archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\Universidad.xml";
 
-                return guardar.Guardar(archivo, uni);
+                banderita = guardar.Guardar(archivo, uni);
             }
             catch (Exception e)
             {
                 throw new ArchivosException(e);
 
             }
+            return banderita;
         }
 
         /// <summary>
         /// Lee archivo xml con los datos de los alumnos
         /// </summary>
         /// <returns></returns>
-        public static bool Leer()
+        public static Universidad Leer()
         {
+            bool banderita;
+            Universidad datos;
             try
             {
                 Xml<Universidad> leer = new Xml<Universidad>();
                 string archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\Universidad.xml";
 
-                Universidad datos;
-                bool s = leer.Leer(archivo, out datos);
-                Console.WriteLine(datos);
-                return s;
+                
+                banderita = leer.Leer(archivo, out datos);
+             
+
             }
             catch (Exception e)
             {
                 throw new ArchivosException(e);
 
             }
+
+            
+            return datos;
         }
         /// <summary>
         /// Guarda los datos de la universidad en un string
