@@ -11,7 +11,7 @@ namespace Entidades
 
     public class Paquete : IMostrar<Paquete>
     {
-        public delegate void DelegadoEstado(object estado);
+        public delegate void DelegadoEstado(object estado, EventArgs e);
         private string direccionEntrega;
         private EEstado estado;
         private string trackingID;
@@ -58,12 +58,18 @@ namespace Entidades
 
                 if (this.InformarEstado != null)
                 {
-                    this.InformarEstado.Invoke(this.estado);
+                    this.InformarEstado.Invoke(this.estado, new EventArgs());
                 }
                 
             }
-
-            PaqueteDao.Insertar(this);
+            try
+            {
+                    PaqueteDao.Insertar(this);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         public string MostrarDatos(IMostrar<Paquete> elemento)
         {

@@ -11,7 +11,7 @@ namespace Entidades
         public static bool Guardar(this string texto, string archivo)
         {
             bool respuesta = false;
-            archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + string.Format(@"\{0}.txt",archivo);
+            archivo = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + @"\" + archivo;
 
             try
             {

@@ -32,13 +32,13 @@ namespace MainCorreo
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Paquete repetido",MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
-            
 
-         //    InformarEstado(paq_InformaEstado);
-            
+            paquete.InformarEstado += paq_InformaEstado;
+           
+               this.ActualizarEstados();
+
         }
 
         private void btnMostrarTodos_Click(object sender, EventArgs e)
@@ -52,15 +52,12 @@ namespace MainCorreo
         }
         private void MostrarInformacion<T>(IMostrar<T> elemento)
         {
-            StringBuilder sb = new StringBuilder();
+            
             if (elemento != null)
             {
-                foreach (var item in ((Correo)elemento).Paquetes)
-                {
-                    sb.AppendLine(item.MostrarDatos(item));
-                }
-
-                rtbMostrar.Text = sb.ToString();
+                string datos = elemento.MostrarDatos(elemento);
+                rtbMostrar.Text = datos;
+                GuardaString.Guardar(datos, "salida.txt");
             }
 
         }
@@ -68,23 +65,43 @@ namespace MainCorreo
         {
             if (this.InvokeRequired)
             {
-            //    Paquete.DelegadoEstado d = new Paquete.DelegadoEstado(paq_InformaEstado);
-            //     this.Invoke(d, new object[] { sender, e });
+                Paquete.DelegadoEstado d = new Paquete.DelegadoEstado(paq_InformaEstado);
+                this.Invoke(d, new object[] { sender, e });
             }
             else
-            { // Llamar al método }
-            //    this.ActualizarEstados();
+            {
+                this.ActualizarEstados();
             }
         }
         private void mostrarToolStripMenuItem(object sender, EventArgs e)
         {
             this.MostrarInformacion<Paquete>((IMostrar<Paquete>)lstEstadoEntregado.SelectedItem);
         }
-        private void ActualizarEstados(object sender, EventArgs e)
+
+        private void ActualizarEstados()
         {
+            this.lstEstadoIngresado.Items.Clear();
+            this.lstEstadoEnViaje.Items.Clear();
+            this.lstEstadoEntregado.Items.Clear();
+
+            foreach (Paquete item in this.correo.Paquetes)
+            {
+                switch (item.Estado)
+                {
+                    case Paquete.EEstado.Ingresado:
+                        this.lstEstadoIngresado.Items.Add(item);
+
+                        break;
+                    case Paquete.EEstado.EnViaje:
+                        this.lstEstadoEnViaje.Items.Add(item);
+                        break;
+                    case Paquete.EEstado.Entregado:
+                        this.lstEstadoEntregado.Items.Add(item);
+                        break;
+
+                }
+            }
 
         }
-
-
     }
 }
