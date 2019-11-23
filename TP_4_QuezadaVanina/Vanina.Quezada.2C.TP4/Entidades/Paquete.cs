@@ -49,6 +49,10 @@ namespace Entidades
             this.trackingID = trackingID;
         }
         #region Metodos
+        /// <summary>
+        /// Retraza el hilo 4 segundos e invoca el evento InformarEstado
+        /// Tambien guarda el paquete en la base de datos
+        /// </summary>
         public void MockCicloDeVida()
         {
             while (this.estado != EEstado.Entregado)
@@ -71,11 +75,24 @@ namespace Entidades
                 throw e;
             }
         }
+
+        /// <summary>
+        /// Muestra los datos del paquete
+        /// </summary>
+        /// <param name="elemento"> elemento con datos a mostrar</param>
+        /// <returns>string con los datos del elemento</returns>
         public string MostrarDatos(IMostrar<Paquete> elemento)
         {
             Paquete p = (Paquete)elemento;
             return string.Format("{0} para {1}", p.trackingID, p.direccionEntrega);
         }
+
+        /// <summary>
+        /// Compara 2 paquetes si el tracking es el mismo devuelve true
+        /// </summary>
+        /// <param name="p1">paquete 1</param>
+        /// <param name="p2">paquete 1</param>
+        /// <returns>true o false</returns>
         public static bool operator ==(Paquete p1,Paquete p2) {
 
             if (p1.trackingID == p2.trackingID)

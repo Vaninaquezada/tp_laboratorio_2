@@ -7,6 +7,9 @@ namespace UnitTestProjectTP4
     [TestClass]
     public class UnitTestTP4
     {
+        /// <summary>
+        /// Valida que al crear un nuevo correo la lista de paquetes no sea nula
+        /// </summary>
         [TestMethod]
         public void TestInstaciaListaPaqueteNotNull()
         {
@@ -14,6 +17,9 @@ namespace UnitTestProjectTP4
             Assert.IsNotNull(correo.Paquetes);
         }
 
+        /// <summary>
+        /// Valida que al intentar ingrasar un tracking ya existente tire una excepcion del tipo TrackingIdRepetidoException
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(TrackingIdRepetidoException))]
         public void TestPaqueteRepetido()

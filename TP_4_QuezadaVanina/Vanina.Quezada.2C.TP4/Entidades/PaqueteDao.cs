@@ -20,7 +20,11 @@ namespace Entidades
             comando.Connection = conexion;
             comando.CommandType = System.Data.CommandType.Text;
         }
-
+        /// <summary>
+        /// Inserta el paquete en la base de datos
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns>true o false</returns>
         public static bool Insertar(Paquete p)
         {
             bool respuesta = false;

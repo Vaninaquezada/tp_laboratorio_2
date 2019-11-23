@@ -8,6 +8,14 @@ namespace Entidades
 {
     public static class GuardaString
     {
+
+
+        /// <summary>
+        /// Metodo de extencion Guarda datos en un archivo txt
+        /// </summary>
+        /// <param name="texto">texto a guardar en el archivo</param>
+        /// <param name="archivo">nombre del archivo donde se guarda el texto</param>
+        /// <returns></returns>
         public static bool Guardar(this string texto, string archivo)
         {
             bool respuesta = false;

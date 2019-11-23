@@ -26,14 +26,20 @@ namespace Entidades
         }
 
         #region Metodos
-
+        /// <summary>
+        /// Finaliza todos los hilos de la lista mockPaquetes
+        /// </summary>
         public void FinEntregas() {
             foreach (Thread item in this.mockPaquetes)
             {
                 item.Abort();
             }
         }
-
+        /// <summary>
+        /// Muestra los datos de la lista de paquetes
+        /// </summary>
+        /// <param name="elementos"></param>
+        /// <returns>string con los datos</returns>
         public string MostrarDatos(IMostrar<List<Paquete>> elementos)
         {
             StringBuilder sb = new StringBuilder();
@@ -45,7 +51,12 @@ namespace Entidades
 
             return sb.ToString();
         }
-
+        /// <summary>
+        /// Agrega un paquete a al correo, crea einicializa un hilo y lo agrega a la lista de hilos
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public static Correo operator +(Correo c, Paquete p)
         {
             foreach (Paquete item in c.paquetes)
